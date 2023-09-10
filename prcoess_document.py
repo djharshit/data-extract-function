@@ -6,7 +6,7 @@ PROJECT_ID = environ.get("PROJECT_ID")
 PROCESSOR_ID = environ.get("PROCESSOR_ID")
 LOCATION = "us"
 
-file_path = r""
+file_path = r"C:\Users\Harshit Music\Pictures\ticket-5.jpg"
 mime_type = "image/jpeg"
 
 
