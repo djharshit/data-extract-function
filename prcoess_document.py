@@ -1,6 +1,7 @@
+from os import environ
+
 from google.api_core.client_options import ClientOptions
 from google.cloud import documentai
-from os import environ
 
 PROJECT_ID = environ.get("PROJECT_ID")
 PROCESSOR_ID = environ.get("PROCESSOR_ID")

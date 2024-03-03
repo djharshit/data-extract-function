@@ -1,13 +1,13 @@
+import io
 import json
-from os import environ
+import random
 import re
-from PIL import Image
+from os import environ
 
+import redis
 from appwrite import client
 from appwrite.services import storage
-import redis
-import io
-import random
+from PIL import Image
 
 # Environment Variables
 APPWRITE_API_KEY = environ.get("APPWRITE_API_KEY")
@@ -23,9 +23,14 @@ def save_to_redis(file_id: str, bill_amount: str):
 
     print("Redis Set:", x)
 
+
 def get_image_data(project_id: str, bucket_id: str, file_id: str):
     client_app = client.Client()
-    client_app = client_app.set_endpoint("https://cloud.appwrite.io/v1").set_project(project_id).set_key(APPWRITE_API_KEY)
+    client_app = (
+        client_app.set_endpoint("https://cloud.appwrite.io/v1")
+        .set_project(project_id)
+        .set_key(APPWRITE_API_KEY)
+    )
     storage_app = storage.Storage(client_app)
 
     result = storage_app.get_file_view(bucket_id, file_id)
@@ -38,7 +43,7 @@ def get_image_data(project_id: str, bucket_id: str, file_id: str):
         "Image Height": image.height,
         "Image Width": image.width,
         "Image Format": image.format,
-        "Image Mode": image.mode
+        "Image Mode": image.mode,
     }
 
     for label, value in info_dict.items():
