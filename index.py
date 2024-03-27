@@ -1,7 +1,8 @@
-import os
 import json
-import redis
+import os
 import random
+
+import redis
 
 
 # Function to generate a random number
